@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+	
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{%static 'search_train_style/css/style.css' %}" />
+    <!-- <link type="text/css" rel="stylesheet" href="{%static 'search_train_style/css/bootstrap.min.css' %}" /> -->
+
+	
+
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<form action="" method="POST">
+							{% csrf_token %}
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Train from</span>
+										<!-- <input class="form-control" type="text" placeholder=""> -->
+										<select class="form-control" name="from">
+											{%for i in place %}
+											<option value="{{i.id}}">{{i.name}}</option>
+											{% endfor %}
+										</select>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Train to</span>
+										<!-- <input class="form-control" type="text" placeholder=""> -->
+										<select class="form-control" name="to">
+											{%for i in place %}
+											<option value="{{i.id}}">{{i.name}}</option>
+											{% endfor %}
+										</select>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Departing</span>
+										<input class="form-control" type="date" name="date" id="demo" min="2023-05-25" class="form-control select-date" required>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										
+								</div>
+								
+							<div class="row">
+								<div class="col-md-3">
+									
+								</div>
+								<div class="col-md-3">
+									
+										
+								</div>
+								<button class="btn btn-danger">Show Train</button>
+									
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<script>
+		var date=new Date();
+		var tdate = date.getDate();
+		var month = date.getMonth() + 1;
+		if(tdate <10){
+			tdate = '0'+tdate;
+		}
+		if(month <10){
+			month = '0' + month;
+		}
+		var year = date.getUTCFullYear();
+		var minDate = year + "-" + month + "-" + tdate;
+		document.getElementById("demo").setAttribute("min", minDate);
+		console.log(minDate);
+	</script>
+	<script type="text/javascript">
+		$(document).ready( function() {
+		$("#basic_button").click( function() {
+		jAlert('Example of a basic alert box in jquery', 'jquery basic alert box');
+		});
+		});
+	</script>
+    {% endblock  %}

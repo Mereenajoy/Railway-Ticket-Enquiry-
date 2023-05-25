@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="bg-light p-4">
+<div class="table table-dark">
+  {% csrf_token %}
+    <h1 style="text-align: center; color: rgb(12, 12, 12);"> View Booking</h1>
+    <table class="table" style="color: rgb(27, 26, 26);">
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">Name</th>
+          <th scope="col">Train Name&No.</th>
+          <th scope="col">Age</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Seat</th>
+          <th scope="col">Date</th>
+          <th scope="col">Depature Time</th>
+          <th scope="col">Price</th>
+          <th scope="col">Action</th>
+          <!-- <th scope="col">Action</th> -->
+          <!-- <th scope="col">Heading</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          
+          {% for p in v %}
+          <!-- <th scope="row">1</th> -->
+          <td>{{p.name}}</td>
+          <td>{{p.train}}</td>
+          <td>{{p.age}}</td>
+          <td>{{p.gender}}</td>
+          <td>{{p.seat}}</td>
+          <td>{{p.date1}}</td>
+          <td>{{p.train.departuretime}}</td>
+          <td>{{p.fare}}</td>
+          <td><a href="cancel_ticket?id={{p.id}}" style="color: red;">Cancel Ticket</a></td>
+          <!-- <td>Cell</td> -->
+        </tr>
+        <tr>
+          {% endfor %}
+          
+      </tbody>
+    </table>
+  </div>
+  <button  onclick="window.print()" class="btn btn-primary">Print</button>
+</div>
+{% endblock  %}

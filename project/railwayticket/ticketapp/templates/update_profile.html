@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewpoint" content="width=device-width",initial-scale="1.0">
+        <title></title>
+        <link rel="stylesheet" href="static/css/reg.css">
+        <style>
+            body{
+                background: url(./static/images/2.jpg);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 100%;
+                background: linear-gradient();
+                height: 100%
+            }
+            </style>
+            
+    </head>
+    <body>
+        <div class="box">
+            <div class="form">
+                {% if msg %}
+                <script>
+                    function displayErrorMessage() {
+                      var msg = "{{ msg }}";
+                      if (msg) {
+                        alert(msg);
+                      }
+                    }
+                  </script>
+        
+        
+               
+              {% endif %}
+                <form  action="" method="post" onsubmit="return signupValidation()">
+                    {% csrf_token %}
+                <h2>Update</h2>
+                <div class="inputbox">
+                    <input type="text" name="username" id="username" value="{{up.username}}" onkeypress="return allowOnlyLetters(event,this);" autocomplete="off"  maxlength="20" required="required">
+                    <span>Username</span>
+                    <i></i>
+                </div>
+    
+                    <div class="inputbox">
+                    <input type="email" name="email"id="email" value="{{up.email}}" id="emailInput" onblur="validateEmail()" required="required">
+                    <span>Email</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="tel" name="phno" id="phno" value="{{up.phno}}" pattern="[0-9]{}" minlength="10" maxlength="10" id="numberInput" onblur="validateNumber()" onkeypress="return isNumberKey(event,this)"  required="required" >
+                    <span>Phone Number</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="tel" name="aadhar" id="aadhar" value="{{up.aadhar}}" id="aadhharno"  minlength="12" maxlength="12" onfocusout="validateAadhaar()" id="numberInput" onblur="validateNumber()" onkeypress="return isNumberKey(event,this)" required="required">
+                    <span>Aadhar No</span>
+                    <i></i>
+                </div>
+                    <div class="inputbox">
+                    <input type="password" name="password" id="password" value="{{up.password}}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" required>
+                    <span>Password</span>
+                    <i></i>
+                
+                </div>
+              
+                <input type="submit" value="Update">
+            </from>
+            </div>
+           </div> 
+        </body>
+    </html>
+    
+    
+    
+    <script language="Javascript" type="text/javascript">
+    
+        function allowOnlyLetters(e, t)
+        {
+           if (window.event)
+           {
+              var charCode = window.event.keyCode;
+           }
+           else if (e)
+           {
+              var charCode = e.which;
+           }
+           else { return true; }
+           if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+               return true;
+           else
+           {
+              alert("Please enter only alphabets");
+              return false;
+           }
+        }
+        </script>
+        <script language="Javascript" type="text/javascript">
+        
+                function isNumberKey(evt, obj) {
+        
+                    var charCode = (evt.which) ? evt.which : event.keyCode
+                    var value = obj.value;
+                    var dotcontains = value.indexOf(".") != -1;
+                    if (dotcontains)
+                        if (charCode == 46) return false;
+                    if (charCode == 46) return true;
+                    if (charCode > 31 && (charCode < 48 || charCode > 57))
+                        return false;
+        
+                    return true;
+                }
+        
+        </script>
+        <script> function validateAadhaar(){ 
+            var regexp = /^[2-9]{1}[0-9]{3}\s[0-9]{4}\s[0-9]{4}$/; 
+            var ano = document.getElementById("aadhharno").value; 
+            
+            if(regexp.test(ano)) { 
+            console.log("Valid Aadhaar Number"); 
+            return true; 
+            }else{ 
+            console.log("Invalid Aadhaar Number"); 
+             return false; 
+            } } 
+            </script>
+    
+    <script>
+        function validateNumber() {
+          var numberInput = document.getElementById("numberInput");
+          var value = numberInput.value;
+    
+          if (value === "0000000000" || value === "1111111111" || value === "2222222222" || value === "3333333333" || value === "4444444444" || value === "5555555555" || value === "6666666666" || value === "7777777777" || value ==="8888888888" || value ==="9999999999")
+          {
+            alert("Please enter a valid phone number");
+            numberInput.value = "";
+            return false;
+          }
+        }
+      </script>
+    <script>
+        function validateEmail() {
+          var emailInput = document.getElementById("emailInput");
+          var email = emailInput.value;
+          var emailRegex = /^[A-Za-z0-9._%+-]+@gmail\.com$/;
+    
+          if (!emailRegex.test(email)) {
+            alert("Please enter a valid Gmail address.");
+            emailInput.value = "";
+            return false;
+          }
+        }
+      </script>

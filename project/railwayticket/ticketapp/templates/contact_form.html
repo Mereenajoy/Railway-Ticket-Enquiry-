@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Us</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="static/css/contact.css">
+    </head>
+  <body>
+  <section class="contact">
+    <div class="content">
+      <h2 style="color: black;">Contact Us</h2>
+      <p></p>
+    </div>
+    <div class="container">
+      <div class="contactInfo">
+        <div class="box">
+          <div class="icon"><i class="fa fa-address-card" aria-hidden="true"></i>
+
+          </div>
+            <div class="text">
+              <h3>Address</h3>
+              <p style="color: black;">122 street<br>vallakom<br>Kottayam</p>
+            </div>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+
+          </div>
+            <div class="text">
+              <h3>Phone Number</h3>
+              <p style="color: black;">9447648923</p>
+            </div>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </div>
+            <div class="text">
+              <h3>Email</h3>
+              <p style="color: black;">admin@gmail.com</p>
+            </div>
+        </div>
+      </div>
+      <div class="contactForm">
+        <form method="post" >
+          {% csrf_token %}
+          <h2>Send Message</h2>
+          <div class="inputBox">
+            <input type="text" name="name" required="required">
+            <span>Full Name</span>
+          </div>
+          <div class="inputBox">
+            <input type="text" name="email" required="required">
+            <span>Email</span>
+          </div>
+          <div class="inputBox">
+            <textarea name="message" required="required"></textarea>
+            <span>Type your Message...</span>
+          </div>
+          <div class="inputBox">
+            <input type="submit" name="send" value="Send">
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+  </body>
+</html>

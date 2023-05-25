@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form  action="checkout_session" method="POST">
+<div class="table table-dark">
+  {% csrf_token %}
+    <h1 style="text-align: center; color: white;"> Checkout </h1>
+    <table class="table" style="color: white;">
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">Name</th>
+          
+          <th scope="col">Price</th>
+          
+          <!-- <th scope="col">Action</th> -->
+          <!-- <th scope="col">Heading</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for p in v %}
+          <!-- <th scope="row">1</th> -->
+          <td>{{p.name}}</td>
+        
+          <td>{{p.fare}}</td>
+          <!-- <td>Cell</td> -->
+          <td><input type="submit" class="btn btn-success" value="pay"></td>
+        </tr>
+        <tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</form>
+  
+{% endblock  %}

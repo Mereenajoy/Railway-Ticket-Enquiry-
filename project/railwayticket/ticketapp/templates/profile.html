@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+
+
+<div class="bg-light p-4 mt-5">
+<table class="table table-striped">
+    {% for p in profile %}
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone NO</th>
+        <th scope="col">Aadhar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- <th scope="row">{{p.username}}</th> -->
+        <td>{{p.username}}</td>
+        <td>{{p.email}}</td>
+        <td>{{p.phno}}</td>
+        <td>{{p.aadhar}}</td>
+        <form method="GET" action="{% url 'updateprofile' %}">
+        <td><button type="submit" class="btn btn-success">Edit Profile</button></td>
+        </form>
+      </tr>
+      
+      
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+ 
+{% endblock content %}

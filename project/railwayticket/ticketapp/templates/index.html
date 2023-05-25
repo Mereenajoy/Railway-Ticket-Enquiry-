@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+
+    <title>Index
+    </title>
+<link rel="stylesheet" href="static/css/index.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+  </head>
+  <body>
+    <header>
+      <a href="#" class="brand">JourneyBooker</a>
+      <div class="menu-btn">
+
+      </div>
+      <div class="navigation">
+        <div class="navigation-items">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="contact_form">Contact</a>
+          <a href="login">SignIn</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="home">
+      <video class="video-slider active" src="static/videos/4.mp4" autoplay muted loop></video>
+      <video class="video-slider" src="static/videos/2.mp4" autoplay muted loop></video>
+      
+      <div class="content">
+        <h1>Wonderful <br><span>Journey</span></h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+        <a href="#">Read More</a>
+      </div>
+   
+    </section>
+    <script type="text/javascript">
+      const menuBtn=document.querySelector(".menu-btn");
+      menuBtn.addEventListener("click",() =>{
+        menuBtn.classList.toggle("active");
+      }
+      );
+      const btns = document.querySelectorAll(".nav-btn");
+      const slides = document.querySelectorAll("video-slider");
+
+      var sliderNav = function(manual){
+        btns.forEach((btn)=>{
+          btn.classList.remove("active");
+        });
+
+        slides.forEach((slide)=>{
+          slide.classList.remove("active");
+        });
+
+        btns[manual].classList.add("active");
+        slides[manual].classList.add("active");
+      }
+      btns.forEach((btn,i) => {
+        btn.addEventListener("click",()=>{
+          sliderNav(i);
+        });
+      });
+        
+ 
+
+
+    </script>
+  </body>
+</html>
