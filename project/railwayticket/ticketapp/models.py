@@ -5,7 +5,7 @@ class Register(models.Model):
     rgid = models.IntegerField("Id Of User", primary_key=True)
     username = models.CharField("User Name", max_length=30)
     email = models.EmailField("email", max_length=30)
-    phno = models.IntegerField("Phone no") 
+    phno = models.IntegerField("Phone no")  
     aadhar = models.CharField("aadhar",max_length=15 , null=True)   
     password = models.CharField("password", max_length=50)
     usertype = models.CharField(max_length=5, default="U")
