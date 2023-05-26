@@ -8,7 +8,6 @@ class Register(models.Model):
     phno = models.IntegerField("Phone no") 
     aadhar = models.CharField("aadhar",max_length=15 , null=True)   
     password = models.CharField("password", max_length=50)
-    # confirmpasswd =models.CharField("Confirm password", max_length=10 , null=True)
     usertype = models.CharField(max_length=5, default="U")
     
     def __str__(self):
@@ -39,7 +38,7 @@ class Add_Train(models.Model):
     max_seat=models.IntegerField(null=True)
     price=models.IntegerField(null=True)
     
-    seat_type=models.ForeignKey(Seat,on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.trainname+" "+str(self.train_no)
     
